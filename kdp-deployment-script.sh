@@ -236,7 +236,7 @@ aws ec2 create-tags \
 aws ec2 create-key-pair \
 --key-name $AWS_KEY \
 --query 'KeyMaterial' \
---output text > EI-Dev-keypair.pem
+--output text > myvpc-keypair.pem
 
 ## Create an EC2 instance for Bastion
 AWS_EC2_INSTANCE_ID_BASTION=$(aws ec2 run-instances \
