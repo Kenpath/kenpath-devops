@@ -1,0 +1,30 @@
+#!/bin/bash
+sudo apt update
+sudo apt -y upgrade
+sudo apt -y install openjdk-8-jdk
+sudo apt-get install openjdk-11-jdk
+sudo wget https://dlcdn.apache.org/kafka/3.0.0/kafka_2.12-3.0.0.tgz
+sudo tar xzf kafka_2.12-3.0.0.tgz
+sudo mkdir -p /usr/local/kafka
+sudo mv kafka_2.12-3.0.0/* /usr/local/kafka
+wget https://github.com/chkchaitu/share/blob/main/zookeeper.service?raw=true -O zookeeper.service
+sudo mv zookeeper.service /etc/systemd/system/
+wget https://github.com/chkchaitu/share/blob/main/kafka.service?raw=true -O kafka.service
+sudo mv kafka.service /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl start zookeeper
+sudo systemctl enable zookeeper
+sudo systemctl start kafka
+sudo systemctl enable kafka
+sudo apt install apt-transport-https
+wget -q -O - https://www.apache.org/dist/cassandra/KEYS | sudo apt-key add -
+sudo sh -c 'echo "deb http://www.apache.org/dist/cassandra/debian 311x main" > /etc/apt/sources.list.d/cassandra.list'
+sudo apt update
+sudo apt -y install cassandra
+sudo apt install apt-transport-https ca-certificates wget
+wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+sudo sh -c 'echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" > /etc/apt/sources.list.d/elastic-7.x.list'
+sudo apt update
+sudo apt -y install elasticsearch
+sudo systemctl start elasticsearch
+sudo systemctl enable --now elasticsearch.service

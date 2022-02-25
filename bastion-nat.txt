@@ -1,0 +1,10 @@
+#!/bin/bash
+sudo yum -y update
+sudo sysctl -w net.ipv4.ip_forward=1
+sudo /sbin/iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+sudo yum -y install iptables-services
+sudo service iptables save
+sudo sed -i -e 's/GSSAPIAuthentication/#GSSAPIAuthentication/g' /etc/ssh/sshd_config
+#GSSAPICleanupCredentials no
+sudo sed -i -e 's/GSSAPICleanupCredentials/#GSSAPICleanupCredentials/g' /etc/ssh/sshd_config
+sudo systemctl restart sshd

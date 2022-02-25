@@ -1,0 +1,31 @@
+king@king:~/kp$ bash kdp-deployment-script.sh 
+Starting deployment of resouces
+
+Created VPC
+{
+    "Return": true
+}
+{
+    "GroupId": "sg-01f965520fdf65427"
+}
+{
+    "GroupId": "sg-028fcb678eaf463f9"
+}
+{
+    "GroupId": "sg-0d78d2fecca73d183"
+}
+Script will proceed after 60 seconds, please be Patient
+{
+    "Return": true
+}
+Deployment complete
+
+# TASKS AND ISSUES
+# DATE: 2/2/22
+* Had a meeting on Infra to be provisioned by thyagu and pradhyumna - 30 minutes
+* Gone through the scripts and setup local awscli and environment - 30 minutes
+* Script Succeeded but SSH failed for bastion, Debugged the issue - 60 minutes
+* Services were not getting started and had to recreate the entire environment again - 60 minutes
+* Kafka Service was not starting due to java 11 dependency issue - 15 Minutes
+* Superset Service was not coming up - 60 minutes
+* Porviding Details to pradhyumna over call and doing a walkthrough of the installation process - 15 minutes
